@@ -86,7 +86,7 @@ namespace AutumnBox.GUI.Util.Loader
                 Logger.Info("killing other adb processes");
                 operatingSystemService.KillProcess("adb.exe");
                 Logger.Info("autumnbox-adb-server is starting");
-                Win32AdbManager.AdbToolsDirectory = new DirectoryInfo(Path.Combine(storageManager.CacheDirectory.FullName, "adb_tools"));
+                //Win32AdbManager.AdbToolsDirectory = new DirectoryInfo(Path.Combine(storageManager.CacheDirectory.FullName, "adb_tools"));
                 BasicBooter.Use<Win32AdbManager>();
                 Logger.Info($"autumnbox-adb-server is started at {BasicBooter.ServerEndPoint}");
             }

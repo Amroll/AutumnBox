@@ -23,6 +23,9 @@ using System.Reflection;
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace AutumnBox.GUI
 {
@@ -64,6 +67,8 @@ namespace AutumnBox.GUI
 #endif
             this.GetComponent<IThemeManager>().Reload();
             base.OnStartup(e);
+            AppCenter.Start("c41ffd94-f04a-47e9-b43f-6ecca159e3c7",
+                   typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnExit(ExitEventArgs e)
