@@ -2,6 +2,7 @@ name: Build Canary
 
 on:
   push:
+    branches: ["ci"]
     tags: ["v*-canary"]
 
 jobs:
@@ -42,8 +43,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ GITHUB_REF##*/ }}
-        release_name: ${{ GITHUB_REF##*/ }}
+        tag_name: ${{ github.ref }}
+        release_name: ${{ github.ref }}
         prerelease: true
 
 
