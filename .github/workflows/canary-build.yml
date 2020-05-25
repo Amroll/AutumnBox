@@ -2,7 +2,6 @@ name: Build Canary
 
 on:
   push:
-    branches: ["ci"]
     tags: ["v*-canary"]
 
 jobs:
@@ -36,6 +35,9 @@ jobs:
         pathSource: src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/win-x86/
         pathTarget: archive.zip
 
+    - name: Get tag
+      id: tag
+      uses: dawidd6/action-get-tag@v1
 
     - name: Create Canary Release
       id: create_release
@@ -43,8 +45,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: ${{ github.ref }}
+        tag_name: ${{steps.tag.outputs.tag}}
+        release_name: ${{steps.tag.outputs.tag}}
         prerelease: true
 
 
