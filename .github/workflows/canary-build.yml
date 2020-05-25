@@ -2,6 +2,7 @@ name: Build Canary
 
 on:
   push:
+    branches: ["ci"]
     tags: ["v*-canary"]
 
 jobs:
@@ -29,7 +30,7 @@ jobs:
     - name: Build DNCGUI
       run: |
         dotnet publish src/AutumnBox.DNCGUI -c Release -r win-x86 --no-dependencies --self-contained true
-        Copy-Item -R src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/win-x86/ AutumnBox-Canary
+        Copy-Item -R src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/win-x86/publish AutumnBox-Canary
 
     - name: Build Essentials Extension
       run: |
