@@ -2,6 +2,7 @@ name: Build Canary
 
 on:
   push:
+    branch: ["master"]
     tags: ["v*-canary"]
 
 jobs:
