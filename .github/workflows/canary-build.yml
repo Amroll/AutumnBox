@@ -35,6 +35,7 @@ jobs:
 
     - name: Build Essentials Extension
       run: |
+        dotnet restore src/AutumnBox.Extensions.DNCEssentials
         dotnet publish src/AutumnBox.Extensions.DNCEssentials -c Release
         Copy-Item -R src/AutumnBox.Extensions.DNCEssentials/bin/Release/netstandard2.1/publish/AutumnBox.Extensions.DNCEssentials.dll AutumnBox-Canary/extensions/
 
