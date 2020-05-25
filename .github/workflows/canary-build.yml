@@ -2,9 +2,7 @@ name: Build Canary
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    tags: ["v*-canary"]
 
 jobs:
   build:
@@ -35,19 +33,20 @@ jobs:
       uses: DuckSoft/create-7z-action@master
       with:
         pathSource: src/AutumnBox.DNCGUI/bin/Release/netcoreapp3.1/win-x86/
-        pathTarget: build.zip
+        pathTarget: archive.zip
 
-    - name: Create Release
+
+    - name: Create Canary Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v${{ steps.get_dv.outputs.dv}}-canary
-        release_name: v${{ steps.get_dv.outputs.dv }}-canary
+        tag_name: v$(Get-Date -Format:'yyyy.MM.dd')-canary
+        release_name: v$(Get-Date -Format:'yyyy.MM.dd')-canary
         prerelease: true
 
-    
+
     - name: Upload
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
