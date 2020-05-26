@@ -36,7 +36,7 @@ jobs:
     - name: Build Essentials Extension
       run: |
         dotnet publish src/AutumnBox.Extensions.DNCEssentials -c Release -r win-x86
-        Copy-Item -R src/AutumnBox.Extensions.DNCEssentials/bin/Release/netcoreapp3.1/win-x86/AutumnBox.Extensions.DNCEssentials.dll AutumnBox-Canary/extensions/
+        xcopy /e /d /y src/AutumnBox.Extensions.DNCEssentials/bin/Release/netcoreapp3.1/win-x86/AutumnBox.Extensions.DNCEssentials.dll AutumnBox-Canary/extensions/AutumnBox.Extensions.DNCEssentials.dll
 
     - name: Get tag
       id: tag
