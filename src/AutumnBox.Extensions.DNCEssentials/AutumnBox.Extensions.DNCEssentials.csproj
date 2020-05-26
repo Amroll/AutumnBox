@@ -1,7 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
     <AssemblyName>AutumnBox.Extensions.DNCEssentials</AssemblyName>
     <RootNamespace>AutumnBox.Extensions.Essentials</RootNamespace>
   </PropertyGroup>
@@ -15,8 +16,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AutumnBox.Extensions.Essentials\AutumnBox.Extensions.Essentials.csproj" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AutumnBox.STDCore\AutumnBox.STDCore.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PresentationFramework">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\PresentationFramework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <Import Project="..\AutumnBox.Extensions.Essentials.Shared\AutumnBox.Extensions.Essentials.Shared.projitems" Label="Shared" />
 
 </Project>
